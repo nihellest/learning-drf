@@ -9,7 +9,8 @@ from .views import CommoditiesViewSet
 router = routers.DefaultRouter()
 router.register(
     r'commodities',
-    CommoditiesViewSet
+    CommoditiesViewSet,
+    basename='commodity'
 )
 
 urlpatterns = router.urls

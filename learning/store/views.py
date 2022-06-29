@@ -11,5 +11,10 @@ class CommoditiesViewSet(viewsets.ModelViewSet):
     """
     ViewSet for store's commodities
     """
-    queryset = Commodity.objects.all()
     serializer_class = CommoditiesSerializer
+
+    def get_queryset(self):
+        queryset = Commodity.objects.all()
+        if 'all' in self.request.query_params:
+            return Commodity.objects.all()
+        return Commodity.objects.filter(is_active=True)
